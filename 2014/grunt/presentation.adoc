@@ -1,0 +1,174 @@
+Grunt: Not Just For Non-Communicators Anymore
+=============================================
+:author:    Lee Fent
+:copyright: Lee Fent 2014
+:backend:   slidy
+:max-width: 45em
+:data-uri:
+:icons:
+:source-highlighter:  source-highlight
+
+Grunt: Not Just for Non-Communicators Anymore
+---------------------------------------------
+_A brief introduction to Grunt_
+
+image::images/grunt-logo.png[]
+
+**by Lee Fent**
+
+What is Grunt
+-------------
+Grunt is a node.js powered task runner.
+
+What does that even *mean*?
+
+[role="incremental"]
+Grunt makes you more productive and less stressed.
+
+
+More about Grunt
+----------------
+Grunt fills approximately the same role as `make`, `rake`, `gradle`, and 
+`maven` in other development environments. 
+
+However, Grunt is based on node and fits into a JavaScript based workflow
+with fewer moving parts and dependencies to keep in sync.
+
+
+How will Grunt help me
+----------------------
+Grunt helps you:
+
+[role="incremental"]
+* Automate your workflow
+* Bring together best of class tools to improve how you create applications
+* Put your tasks into an independant, versionable container
+
+
+Getting started with Grunt
+--------------------------
+Grunt needs several things to get started.  
+
+1.  node.js: It is node.js powered after all.
+2.  `package.json`: This file contains information about your project and
+    contains a list of the Grunt modules that you'll use to make things 
+    work.
+3.  `Gruntfile.js`: This is the file that configures the modules from the 
+    `package.json` file and defines your tasks.
+
+Once those are all assembled, you can run `grunt` and fire off various tasks
+for your project.
+
+
+Some common Grunt tasks
+-----------------------
+
+Here are some common tasks that Grunt helps automate and gets all of these 
+tasks out of your hair.
+
+[role="incremental"]
+* Compile Sass/SCSS/less
+* Concatenate JavaScript files
+* Minify CSS stylesheets
+* Uglify JavaScript files
+* Run lint-ers for JavaScript/CSS files
+
+
+Maybe a little less mundane
+---------------------------
+But Grunt isn't just limited to JavaScript and CSS files.  Grunt can help
+with:
+
+[role="incremental"]
+* Configure and run unit and integration tests
+* Build projects in a 'src' to 'dist' fashion
+* Livereload the browser
+* Watch files for changes and fire tasks based on those changes
+* Start a local web server for development
+
+
+How about something just a little more funky
+--------------------------------------------
+Grunt isn't limited to particularly web related tasks. There are plugins to
+all sorts of other things such as:
+
+[role="incremental"]
+* Copy files to Amazon S3 platform
+* Minify SVG graphics
+* Compile Markdown documents
+* Generate OS Notifications 
+
+
+So how do I get in on this lazy lifestyle
+-----------------------------------------
+* Install `node` and `npm` (http://nodejs.org/[] for detailed instructions)
+* Open a terminal or command shell and run `npm install -g grunt-cli`
+* Whip up a `package.json` file such as this:
+[source,javascript]
+----
+{
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.4.3"
+  }
+}
+----
+* Run `npm install`
+* Define some grunt tasks in a `Gruntfile.js`
+* Run `grunt <some task>`
+
+
+"Real World" use
+----------------
+How fast can you get started on a website?  How about:
+
+[role="incremental"]
+1.  `git clone https://github.com/lafent/grunt-and-done.git`
+2.  `cd grunt-and-done && npm install`
+3.  `grunt`
+
+[role="incremental"]
+Now you have Twitter Bootstrap v3, jQuery, Google Analytics, less 
+stylesheets, Jade html templating. a local web server, and a watch task to 
+updating the output files upon save.  
+
+[role="incremental"]
+*Not bad for three commands.*
+
+
+A word of caution
+-----------------
+Careful with the plugins.  There are plugins, then there are "plugins". 
+Strictly speaking this problem is more properly with the node.js ecosystem, but
+the rapid rate of development, general flexibility, and somewhat ambiguous
+quality of some of the plugins and modules can have some unpleasant side
+effects. 
+
+*Always practice safe computing.*
+
+
+Closing
+-------
+Thanks, that's all folks!
+
+Questions?
+
+
+Who was that fast talkin' man?
+------------------------------
+Lee Fent
+
+* Web Developer for Oklahoma State University DASNR
+* Full Contact Mixed Martial Arts Style Chef
+* Leader of an 80's Glam Band
+
+_At least one of those three is true._
+
+image::images/dasnr-logo.png[]
+
+
+//---------------------------------------------------------------------------//
+// vim: set syntax=asciidoc:
+// vim: set ft=asciidoc:
+//---------------------------------------------------------------------------//

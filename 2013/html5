@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo Starting html5 generation
+mkdir -p ./presentations/html/images
+
+cp -rv backbone/images ./presentations/html
+asciidoc -b html5 -a toc2 -o ./presentations/html/backbone-presentation.html \
+  backbone/presentation.adoc
+
+echo Finished html5 generation
+

@@ -1,0 +1,364 @@
+Put a Little Backbone In Your Mobile Applications
+=================================================
+:author:              Lee Fent
+:copyright:           Lee Fent 2013
+:backend:             slidy
+:max-width:           45em
+:data-uri:
+:icons:
+:source-highlighter:  source-highlight
+
+Put a Little Backbone In Your Mobile Applications
+-------------------------------------------------
+_A gentle introduction to Backbone.js_
+
+**by Lee Fent**
+
+Introduction, or what do I see from 50,000ft?
+---------------------------------------------
+Backbone.js is a JavaScript library that allows developers to build on top of 
+code that has been developed in real world applications.  With a small 
+learning curve, Backbone allows a developer to become productive quickly. 
+At the core of Backbone lies an MV* architecture, allowing a developer to 
+easily understand the abstractions used and extend an existing mental model of 
+how to structure their code to take advantage of Backbone.js.
+
+When should I consider Backbone.js?
+-----------------------------------
+If your application has heavy client-side manipulations for view rendering 
+*and* data creation/manipulation will be occurring in the client, you should 
+consider Backbone or a similar framework or library.
+
+However, if you're just looking to spruce up a server-side application with
+some client-side effects, then Backbone is probably overkill. jQuery or 
+hand-written JavaScript is probably more of what you're needing.
+
+A little closer look at Backbone.js
+-----------------------------------
+Backbone.js is a JavaScript library for abstracting and manipulating DOM 
+related events and actions. As lightweight JavaScript library, Backbone.js 
+dictates a general structure to your application code. By helping to manage
+and decouple your application code, Backbone.js leaves you with more 
+maintainable and understandable code
+
+* Typical use cases for Backbone.js are single-page applications (SPAs) and 
+  mobile web applications.
+* Since Backbone.js is a library extracted from actual production 
+  applications, it is stable and mature. 
+* Backbone.js has a focus on extending basic object models with query and 
+  manipulation tools.
+* Since it has a small code base, Backbone is well suited to mobile 
+  applications.
+
+What does Backbone.js do for me?
+--------------------------------
+Backbone slices, dices, makes Julienne fries, or, perhaps more likely, it does 
+the following things:
+
+* Manages data Model state, validation and events
+* Enables painless sync of data to and from the data source.
+* Handles the management of large lists of data models efficiently.
+* Uses templates to isolate layout from logic.
+
+What do I need to make the magic happen?
+----------------------------------------
+Backbone is a surprisingly light library with relatively minor requirements. 
+For Backbone and Underscore we're talking a measily 10.4K (gzip'd)!  You 
+probably have logos bigger than that. Throw in jQuery and json2 and you're 
+still talking about less than 50K.  If you use Zepto instead of jQuery, you'd 
+be under 25K for the whole kit and kaboodle. (How often do you see a 
+presentation use the word kaboodle?)
+
+* Backbone's only hard dependency is Underscore.js (>= 1.4.3).
+* For RESTful persistence, history support via Backbone.Router and DOM 
+  manipulation with Backbone.View, include json2.js, and either jQuery 
+  (>= 1.7.0) or Zepto. The requirement for json2 is dropped if you're only 
+  supporting browsers that implement it in native code (i.e. newer browsers).
+
+What are the goodies inside of Backbone.js?
+-------------------------------------------
+* The core components are Model, View, Collection, and Router.
+* Events are exposed on almost all Backbone components. It's also possible 
+  to "mixin" the event struct to plain JavaScript objects.
+* By managing RESTful interaction with the server and manages collections, 
+  models, and views (controllers), allowing the client side to (nearly) 
+  effortlessly sync with the server.
+* Backbone is agnostic about templating frameworks. Underscore’s 
+  Microtemplating is available by default, but swapping templating engines is 
+  simple.
+* Easy conventions for application layout and internals. Since Backbone is a 
+  library, it focuses less on being a swiss army knife and more on being 
+  pluggable.
+
+Who are the cool kids that are using Backbone.js?
+-------------------------------------------------
+Just a sample of companies and websites that use Backbone.js.
+
+* https://www.documentcloud.org/home[DocumentCloud (creators)]
+* http://www.usatoday.com/[USA Today]
+* http://www.hulu.com/[Hulu]
+* http://www.linkedin.com/[LinkedIn Mobile]
+* http://www.rdio.com/[Rdio]
+* http://www.foursquare.com[FourSquare]
+* https://www.khanacademy.org/[Khan Academy]
+
+The Basics: Models
+------------------
+Backbone models contain data for an application as well as the logic around 
+this data. For example, we can use a model to represent the concept of a todo 
+item including its attributes like title (todo content) and completed (current 
+state of the todo).
+
+* Models are one of the basic building blocks.
+* Offer functionality related to the data and logic surrounding that data 
+  (such as sane defaults and data validation)
+
+The Basics: Models (Code)
+-------------------------
+[source,javascript]
+----
+var Message = Backbone.Model.extend({
+  initialize: function() {
+    if (!this.attributes.date) { this.attributes.date = new Date(); }
+  },
+  defaults: {
+    message: '',
+    author: 'Anonymous',
+    date: ''
+  },
+  validate: function(attribs, options) {
+    if (!attribs.message) { return "Message text is required"; }
+  }
+});
+var message = new Message({message: 'Hello World!', author: 'Lee'});
+console.log(message.toJSON());
+----
+
+The Basics: Views
+-----------------
+Views in Backbone don’t contain the visible representation or HTML markup for 
+your applicationm, instead, they contain the logic behind the presentation of 
+the model’s data to the user. This is usually achieved using JavaScript 
+templating (e.g., Underscore Microtemplates, Mustache, jQuery-tmpl, etc.). A 
+view’s render() method can be bound to a model’s change() event, enabling the 
+view to instantly reflect model changes without requiring a full page refresh.
+
+* Views contain the logic behind the presentation of the model’s data to the 
+  user. 
+* Commonly the View will contain the HTML Template to render the model.
+* This is usually achieved using JavaScript templating (e.g., Underscore 
+  templates, Mustache, jQuery-tmpl, etc.). 
+* The render() method is often tied to the change() event on the model, 
+  allowing the display to mirror the model without a complex and costly page 
+  refresh.
+* It is a good practice to return this at the end of the render() so that you 
+  can chain calls and parents can make use of it.
+
+The Basics: Views (Code)
+------------------------
+[source,javascript]
+----
+var MessageView = Backbone.View.extend({
+  tagName: 'div', 
+  className: 'message', 
+  template: Handlebars.templates['message'],
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
+});
+
+var message = new Message({message: "Hello World", author: "Lee"});
+var myView = new MessageView({model: message});
+console.log(messageView.render().el);
+----
+
+The Basics: Collections
+-----------------------
+Collections are sets of Models and are created by extending 
+Backbone.Collection.
+
+Normally, when creating a collection you will define a few properties such as
+the base url and the model collected. Additional properties can be defined and 
+events added to enable more complete functionality
+
+* Collections contain and manage groups of Backbone models.
+* Normally you define the model at the point of defining the collection.
+* The majority of the functionality for a Backbone.Collection actually comes
+  from the Underscore library such as map, each, filter and sort.
+
+_Note: fetch() should not be used to populate collections on page load, 
+instead models needed at load time should already be preloaded into place. The 
+fetch() method is intended for lazily-loading models for interfaces that are 
+not needed immediately._
+
+The Basics: Collections (Code)
+------------------------------
+[source,javascript]
+----
+var MessageList = Backbone.Collection.extend({model: Message});
+
+var m1 = new Message({message: "Hello World!", author: "Lee"});
+var m2 = new Message({message: "Goodbye World!", author: "Lee"});
+var messages = new MessageList([m1, m2]);
+
+// Let's see what we've got so far.
+messages.each(function(item) { console.log(item.toJSON()); });
+----
+
+The Basics: Events
+------------------
+Events are an inversion of control. Instead of having one function call 
+another by name, the second function is registered as a handler to be called 
+when a specific event occurs. This is what makes it possible for your business 
+rules to not have any knowledge about your visible interface and that makes 
+this a very powerful tool.
+
+* Backbone.Events is mixed into the other Backbone classes, including: 
+  Backbone.Model, Backbone.Collection, Backbone.Router, Backbone.History, 
+  Backbone.View, and even Backbone itself (meaning the root object).
+* Events is a module that can be mixed in to any object, giving the object the 
+  ability to bind and trigger custom named events. 
+* Events do not have to be declared before they are bound, and may take passed 
+  arguments.
+
+The Basics: Events (Code)
+-------------------------
+[source,javascript]
+----
+var MessageList = Backbone.Collection.extend({
+  model: Message,
+  initialize: function(items) {
+    this.on('add', function(item) { 
+      console.log("Adding item"); 
+    });
+    this.on('change:author', function(item) { 
+      console.log("Author Change");
+    });
+    this.add(items);
+  }
+});
+var messages = new MessageList([m1]);
+messages.add(m2);
+m1.set('author', 'Unknown');
+----
+
+The Basics: Router
+------------------
+* Backbone.Router provides methods for routing client-side pages, and 
+  connecting them to actions and events. 
+* For browsers which don't yet support the History API, the Router handles 
+  graceful fallback and transparent translation to the fragment version of the 
+  URL.
+
+The Basics: Router (Code)
+-------------------------
+[source,javascript]
+----
+var TwaddleRouter = Backbone.Router.extend({
+  routes: {
+    'help': 'help',
+    'new': 'addMessage'
+  },
+  help: function() { console.log("Routed to Help"); },
+  new: function() { console.log("Routed to AddMessage"); }
+});
+
+var twaddleRouter = new TwaddleRouter();
+
+// Let's get this show on the road!
+Backbone.history.start();
+twaddleRouter.navigate("#/help");
+// Now check out that address bar
+----
+
+Not So Basic: Sync API + REST
+-----------------------------
+That's great, but how do I get data to the server (or from the server for that 
+matter)?
+
+* Backbone.sync is the function that Backbone calls every time it attempts to
+  read or save a model to the server.
+* Collections can have a URL that is a REST endpoint for pulling information.
+* The HTTP Verbs GET, POST, PUT, DELETE are all supported by default.
+* Options to "emulate" both REST and JSON are available for interacting with 
+  servers that don't automatically support these technologies.
+
+Not So Basic: Sync API + REST (Code)
+------------------------------------
+[source,javascript]
+----
+var MessageList = Backbone.Collection.extend({
+  model: Message,
+  url: '/twaddle/news'
+};
+var messages = new MessageList();
+
+// This kicks off the AJAX request, but makes no promise about how 
+// quickly the request returns. Best practices are to "boostrap" your 
+// initial data during the server-side processing instead of waiting 
+// on a fetch to return data.
+messages.fetch();
+----
+
+Friends?
+--------
+*Management and Setup*
+
+* https://github.com/backbone-boilerplate/backbone-boilerplate[Backbone 
+  Boilerplate]
+* https://github.com/backbone-boilerplate/grunt-bbb[Grunt-BBB (Backbone 
+  Boilerplate Buddy)]
+* http://yeoman.io/[Yeoman]
+
+*HTML Templating*
+
+* http://handlebarsjs.com/[Handlebars]
+* http://mustache.github.io/[Mustache]
+* http://twitter.github.io/hogan.js/[Hogan]
+* http://underscorejs.org/#template[Underscore "Microtemplates"]
+* https://github.com/BorisMoore/jquery-tmpl[jQuery-tmpl] _Probably dead, but 
+  still useful_
+
+Popular Extensions
+------------------
+Backbone is great by itself, but even better with some helping hands.
+
+* http://marionettejs.com/[Backbone.Marionette]: More opinionated than 
+  Backbone itself.
+* http://thoraxjs.org/[Thorax]: Backbone + Handlebars = FTW!
+* http://documentup.com/jeromegn/backbone.localStorage[Backbone.localStorage]: 
+  Great for storing models in a mobile browser. _Check Github for Updates too_
+
+Demonstration Time!
+-------------------
+* http://localhost:8080/twaddle[Twaddle: An Example] -- Just like twitter, 
+  only pointless
+
+Closing
+-------
+Thanks, that's all folks!
+
+*Helpful References*
+
+* http://backbonejs.org[Backbone.js Website]
+* http://addyosmani.github.io/backbone-fundamentals/[Addy Osmani's 
+  Developing Backbone.js Applications ebook]
+* http://backbonetutorials.com/[Backbone Tutorials]
+
+Question?
+
+Who was that fast talkin' man?
+------------------------------
+Lee Fent
+
+* Web Developer for Oklahoma State University DASNR
+* Former Astronaut
+* Elite Ninja
+
+At least one of those three is true.
+
+//---------------------------------------------------------------------------//
+// vim: set syntax=asciidoc:
+// vim: set ft=asciidoc:
+//---------------------------------------------------------------------------//

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo Starting slidy generation
+mkdir -p presentations/slidy/images
+
+cp -rv backbone/images presentations/slidy
+asciidoc -o presentations/slidy/backbone-presentation.html \
+  backbone/presentation.adoc
+
+echo Finished slidy generation
+

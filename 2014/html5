@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo Starting html5 generation
+mkdir -p presentations/html/images
+
+cp -rv grunt/images presentations/html
+asciidoc -b html5 -a toc2 -o presentations/html/grunt-presentation.html \
+  grunt/presentation.adoc 
+
+cp -rv android/images presentations/html
+asciidoc -b html5 -a toc2 -o presentations/html/android-presentation.html \
+  android/presentation.adoc
+
+echo Finished html5 generation
+

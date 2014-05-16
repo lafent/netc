@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo Starting slidy generation
+mkdir -p presentations/slidy/images
+
+cp -rv grunt/images presentations/slidy
+asciidoc -o presentations/slidy/grunt-presentation.html \
+  grunt/presentation.adoc 
+
+cp -rv android/images presentations/slidy
+asciidoc -o presentations/slidy/android-presentation.html \
+  android/presentation.adoc
+
+echo Finished slidy generation
+

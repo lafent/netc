@@ -3,8 +3,8 @@ NETC
 :author:     Lee Fent
 :copyright:  Lee Fent 2014
 
-NETC (National Extension Technology Conference ) Presentations
---------------------------------------------------------------
+National Extension Technology Conference Presentations
+------------------------------------------------------
 
 A github repo for my http://www.dce.k-state.edu/conf/ace-netc/[ACE/NETC-2013]
 and http://netc2014.org/[NETC-2014] presentations.

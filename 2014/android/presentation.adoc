@@ -318,7 +318,7 @@ Content Providers
 Allow you to internally *or* externally offer access to your internal 
 application data.
 
-Examples of Included Content Providers:
+Examples of Content Providers included in Android:
 
 * Contacts
 * Media Store
@@ -361,7 +361,7 @@ A couple of tricks that aren't really all related to Android development.
 The Good
 --------
 
-* Documentation: So much good documentation, unsurprisingly well indexed and
+* Documentation: So much good documentation, (unsurprisingly) well indexed and
   searchable.
 * Examples: Lots and lots of examples of how to do things. 
 * Flexibility: Your application can react and reconfigure itself for a 
@@ -420,6 +420,9 @@ Presentation:
 
 Questions?
 
+Want the ringtone?
+  https://github.com/lafent/netc/tree/master/2014/android/assets/modem.mp3[]
+
 Who was that fast talkin' man?
 ------------------------------
 Lee Fent
@@ -432,50 +435,6 @@ _At least one of those three is true._
 
 image::images/dasnr-logo.png[]
 
-////
-Subsections
------------
-
-1.  [line-through]#Layouts#
-2.  [line-through]#Setup#
-3.  Languages _en-US-rOkie_ is under review.
-4.  [line-through]#Fragmentation#
-5.  [line-through]#Emulator for Intel Speedups#
-6.  [line-through]#Permissions#
-7.  Android Services (Database, Location, etc)
-8.  Building Blocks
-  * [line-through]#Activities#
-    a.  Traditional
-    b.  Fragment
-  * [line-through]#Intents#
-    a.  Explicit
-    b.  Implicit
-  * [line-through]#Services#
-    a.  Background
-    b.  Long running (Honeycomb) -- CPU and Battery.
-  * [line-through]#ContentProviders#
-    a.  CRUD
-    b.  Bigger data payloads than Intents
-    c.  Examples:
-      * Contacts Provider
-      * Settings Provider
-      * Media Store
-  * [line-through]#Broadcast Receivers#
-    a.  Pub/Sub or Observer
-    b.  Linked to Intents
-  * Application Context
-    a.  Whole shebang.  Includes all or some of the above blocks, plus assets.
-    b.  Easily confused with Context class (parent of Activities and Services)
-9.  [line-through]#Resources#
-  a.  Icons
-  b.  Graphics
-  c.  Language Packages
-10. [line-through]#XML all up in the house#
-11. [line-through]#Websites and External Resources#
-12. AsyncTasks?
-13. [line-through]#Orientation: example of emulator bugs.#
-14. [line-through]#Test Monkey#
-////
 
 //---------------------------------------------------------------------------//
 // vim: set syntax=asciidoc:

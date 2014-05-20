@@ -235,7 +235,7 @@ Have a detailed (and complex) Lifecycle
 
 
 Activity Lifecycle
----------------------
+------------------
 
 Android Activities go through many states during their life.  
 

@@ -76,8 +76,9 @@ tasks out of your hair.
 
 Maybe a little less mundane
 ---------------------------
-But Grunt isn't just limited to JavaScript and CSS files.  Grunt can help
-with:
+But Grunt isn't just limited to JavaScript and CSS files.
+
+Grunt can help with:
 
 [role="incremental"]
 * Configure and run unit and integration tests
@@ -151,6 +152,9 @@ effects.
 Closing
 -------
 Thanks, that's all folks!
+
+Presentation:
+  https://github.com/lafent/netc/tree/master/2014/grunt/presentation.adoc[]
 
 Questions?
 

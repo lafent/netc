@@ -420,8 +420,6 @@ Presentation:
 
 Questions?
 
-Want the ringtone?
-  https://github.com/lafent/netc/tree/master/2014/android/assets/modem.mp3[]
 
 Who was that fast talkin' man?
 ------------------------------

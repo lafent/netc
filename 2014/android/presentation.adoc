@@ -35,7 +35,8 @@ guideline for what needed to be included and what didn't need to be included.
 The iOS development process
 ---------------------------
 
-* Initially developed an iOS6 application in Summer of 2013.
+* Initially developed as an iOS6 application in Summer of 2013, later updated
+  to iOS7 user interface.
 * One student worker worked full time during the summer to produce the
   application
 * Much of this time was legwork, getting calculations together, generating 

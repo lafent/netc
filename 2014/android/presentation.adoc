@@ -190,7 +190,7 @@ configurations.
 
 You can provide resources tailored by the following criteria:
 [role="incremental"]
-* Langauge: Prefer English, French, or Hmong?  Android has you covered!
+* Language: Prefer English, French, or Hmong?  Android has you covered!
 * Carrier: ex. AT&T, Verison, or O2
 * Layout Direction: ex. Right-to-Left or Left-to-Right
 * Orientation: Landscape or Portrait

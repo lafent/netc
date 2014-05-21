@@ -23,7 +23,7 @@ Where we started
 
 Historically the Department of Plant and Soil Sciences at Oklahoma State
 University had a web application available to help producers calculate the
-Ammonia Loss of their soil (as well as many other related calculators).
+ammonia loss of their soil (as well as many other related calculators).
 
 When we started we had a pretty well defined scope of functionality and a
 guideline for what needed to be included and what didn't need to be included.
